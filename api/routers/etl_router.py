@@ -11,6 +11,6 @@ router = APIRouter(
     responses={404: {"description": "Not found my dear"}},
 )
 
-@router.get("/sync_data/")
-async def sync_data():
-    return etl_controller.sync_data()
+@router.get("/sync_data/{db_name}/{tables}")
+async def sync_data(db_name, tables):
+    return etl_controller.sync_data(db_name, tables)
