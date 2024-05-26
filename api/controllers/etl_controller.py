@@ -30,7 +30,7 @@ class ETLController():
                 tables_to_clone = database_tables
 
             source_engine = create_engine(ETLRepository.get_source_engine(db_name))
-            target_engine = create_engine(ETLRepository.get_target_engine(db_name))
+            target_engine = create_engine(ETLRepository.get_target_engine('target_db'))
 
             source_metadata = MetaData()
             target_metadata = MetaData()

@@ -30,7 +30,7 @@ RUN mkdir /app \
 
 WORKDIR /app
 
-EXPOSE 8080
+EXPOSE 8000
 
 COPY requirements.txt /app/
 
@@ -38,4 +38,4 @@ RUN pip install -r requirements.txt --upgrade
 
 COPY api/ /app/api/
 
-ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:8000", "--workers=1", "--worker-class=uvicorn.workers.UvicornWorker", "api.main:app", "--reload"]
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
